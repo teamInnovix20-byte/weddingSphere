@@ -1,0 +1,47 @@
+services:
+  app:
+    build: .
+    container_name: weddingsphere-app
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    # installs vendor/ on first start, then runs the Laravel dev server
+    command: sh -c "[ -d vendor ] || composer install --no-interaction; php artisan serve --host=0.0.0.0 --port=8000"
+
+  db:
+    image: postgres:16
+    container_name: weddingsphere-db
+    environment:
+      POSTGRES_DB: weddingsphere
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5433:5432"        # host port 5433 so it never clashes with a local PostgreSQL
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d weddingsphere"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # optional GUI:  docker compose --profile tools up -d pgadmin   -> http://localhost:5050
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: weddingsphere-pgadmin
+    profiles: ["tools"]
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@weddingsphere.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
