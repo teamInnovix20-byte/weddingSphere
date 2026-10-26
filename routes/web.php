@@ -16,3 +16,12 @@ Route::get('/portal', [PortalController::class, 'index'])->name('portal.index');
 Route::get('/portal/{type}', [PortalController::class, 'choose'])
     ->whereIn('type', ['couple', 'vendor'])
     ->name('portal.choose');
+
+// Dashboard / Guest List & RSVP Command Center
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/guests', function () {
+    return view('dashboard');
+})->name('guests.index');
