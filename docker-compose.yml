@@ -11,7 +11,7 @@ services:
       db:
         condition: service_healthy
     # installs vendor/ on first start, then runs the Laravel dev server
-    command: sh -c "[ -d vendor ] || composer install --no-interaction; php artisan serve --host=0.0.0.0 --port=8000"
+    command: sh -c "[ -d vendor ] || composer install --no-interaction; [ -d node_modules ] || npm install; npm run build; php artisan serve --host=0.0.0.0 --port=8000"
 
   db:
     image: postgres:16
