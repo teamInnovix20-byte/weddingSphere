@@ -12,10 +12,11 @@
                 <img src="{{ asset('images/logo.png') }}" alt="WeddingSphere" class="h-7 w-auto object-contain">
             </a>
 
-            {{-- Collapsed Monogram Logo (visible only in icon-only mode) --}}
-            <a href="{{ url('/') }}" class="sidebar-collapsed-only hidden mx-auto items-center justify-center size-9 rounded-xl bg-gradient-to-br from-wine to-[#4d1928] text-white font-serif font-bold text-sm shadow-xs ring-1 ring-white/50" title="WeddingSphere Dashboard">
-                WS
+            {{-- Collapsed Logo --}}
+            <a href="{{ url('/') }}" class="sidebar-collapsed-only hidden mx-auto items-center justify-center" title="WeddingSphere Dashboard">
+                <img src="{{ asset('images/logo-small.png') }}" alt="WeddingSphere" class="size-8 object-contain">
             </a>
+
 
             {{-- Mobile Close Button --}}
             <button type="button" data-sidebar-close class="rounded-lg p-1 text-muted hover:bg-chip lg:hidden cursor-pointer" aria-label="Close Sidebar">
