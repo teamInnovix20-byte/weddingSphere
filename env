@@ -1,0 +1,16 @@
+APP_NAME=WeddingSphere
+APP_ENV=local
+APP_KEY=base64:teqdo3cAxqqNjmOsaYtKPeWLp2Ly+llslIFJ4+FCY7Y=
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=pgsql
+DB_HOST=db
+DB_PORT=5432
+DB_DATABASE=weddingsphere
+DB_USERNAME=innovix
+DB_PASSWORD=innovix@123
+
+SESSION_DRIVER=file
+CACHE_STORE=file
+QUEUE_CONNECTION=sync

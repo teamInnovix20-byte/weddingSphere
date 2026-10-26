@@ -16,3 +16,6 @@ Route::get('/portal', [PortalController::class, 'index'])->name('portal.index');
 Route::get('/portal/{type}', [PortalController::class, 'choose'])
     ->whereIn('type', ['couple', 'vendor'])
     ->name('portal.choose');
+
+// Admin: vendor application list (frontend preview only)
+Route::view('/admin/vendor-applications', 'admin.vendor-applications')->name('admin.vendor-applications');
