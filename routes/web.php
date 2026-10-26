@@ -25,3 +25,5 @@ Route::redirect('/settings', '/settings/security');
 Route::get('/settings/{section}', [AccountController::class, 'settings'])
     ->whereIn('section', ['security', 'notifications', 'connected', 'billing', 'sessions'])
     ->name('settings.show');
+// Admin: vendor application list (frontend preview only)
+Route::view('/admin/vendor-applications', 'admin.vendor-applications')->name('admin.vendor-applications');
