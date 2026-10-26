@@ -36,3 +36,5 @@ Route::get('/settings/{section}', [AccountController::class, 'settings'])
     ->name('settings.show');
 // Admin: vendor application list (frontend preview only)
 Route::view('/admin/vendor-applications', 'admin.vendor-applications')->name('admin.vendor-applications');
+Route::view('/home', 'home')->name('home');
+Route::view('/vendors', 'vendors.explore')->name('vendors.explore');
