@@ -2,8 +2,77 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
 
+/* ---------------------------------------------------------
+   WeddingSphere theme (same colours as the old weddingsphere.css)
+   Use them as: bg-wine, text-ink, bg-bg-soft, border-line ...
+   --------------------------------------------------------- */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+    --color-bg: #fff8f6;
+    --color-bg-soft: #fbf1ef;
+    --color-wine: #732f46;
+    --color-wine-hover: #5f2338;
+    --color-wine-dark: #5c132e;
+    --color-ink: #2a1a1f;
+    --color-muted: #6c5f63;
+    --color-muted-2: #8d7f83;
+    --color-chip: #f4eae8;
+    --color-chip-2: #f5ebe9;
+    --color-field: #fbf3f1;
+    --color-line: #eadedb;
+    --color-gold-bg: #fdebc9;
+    --color-gold-ink: #7a5a14;
+    --color-success-bg: #e8efe9;
+    --color-success-ink: #4f6f58;
+}
+
+/* page width: 1040px max with a 24px gutter on each side */
+@utility ws-container {
+    width: min(1040px, 100% - 48px);
+    margin-inline: auto;
+}
+
+@layer base {
+    html { scroll-behavior: smooth; }
+    body {
+        @apply bg-bg font-sans text-[14px] leading-normal text-ink antialiased;
+    }
+    button:not(:disabled),
+    [role='button']:not(:disabled) { cursor: pointer; }
+}
+
+/* ---------------------------------------------------------
+   Reusable Tailwind buttons / pills
+   --------------------------------------------------------- */
+@layer components {
+    /* full width form / card button */
+    .btn {
+        @apply flex h-[42px] w-full items-center justify-center gap-2 rounded-md text-[12.5px] font-semibold
+               transition duration-200 active:translate-y-px;
+    }
+    .btn-primary { @apply bg-wine text-white hover:bg-wine-hover hover:shadow-lg hover:shadow-wine/25; }
+    .btn-soft    { @apply bg-chip-2 text-wine-dark hover:bg-[#efdfdc] hover:shadow-md hover:shadow-wine/10; }
+    .btn-lg      { @apply mt-4 h-11 rounded-lg text-[13px]; }
+
+    /* small header button */
+    .btn-sm {
+        @apply inline-flex items-center justify-center rounded-lg bg-wine px-4 py-[9px] text-[12px] font-semibold
+               text-white transition duration-200 hover:bg-wine-hover hover:shadow-md hover:shadow-wine/30;
+    }
+
+    .btn-social {
+        @apply flex h-[38px] items-center justify-center gap-2 rounded-lg bg-[#f8ece9] text-[11.5px]
+               font-semibold text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-[#f1dfdb] hover:shadow-md;
+    }
+
+    .pill {
+        @apply inline-flex items-center gap-[7px] rounded-full text-[10.5px] text-muted transition duration-300
+               hover:-translate-y-0.5 hover:shadow-md hover:shadow-wine/10;
+    }
+
+    .link-strong { @apply font-semibold text-wine-dark hover:underline; }
 }
