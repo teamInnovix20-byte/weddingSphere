@@ -18,6 +18,15 @@ Route::get('/portal/{type}', [PortalController::class, 'choose'])
     ->whereIn('type', ['couple', 'vendor'])
     ->name('portal.choose');
 
+// Dashboard / Guest List & RSVP Command Center
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/guests', function () {
+    return view('dashboard');
+})->name('guests.index');
+
 // Profile & Settings (frontend only)
 Route::get('/profile', [AccountController::class, 'profile'])->name('profile.show');
 
